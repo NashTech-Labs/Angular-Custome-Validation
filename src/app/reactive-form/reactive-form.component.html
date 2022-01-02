@@ -1,0 +1,40 @@
+<form [formGroup]="form">
+  <div class="input-field m-2">
+    <span class="form-label" > Email</span>
+    <input
+      matInput
+      type="email"
+      name="email"
+      class="form-control"
+      placeholder="Email"
+      formControlName="email"
+      autocomplete="disable"
+    />
+  </div>
+  <div class="input-field m-2">
+    <span class="form-label" >Password</span>
+    <input
+      matInput
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      formControlName="password"
+      autocomplete="disable"
+    />
+    <div
+      class="field-message text-danger"
+      *ngIf="form.controls['password'].errors?.passwordStrength"
+    >
+      Your password must have lower case, upper case and numeric characters and minimum 8 characters long.
+    </div>
+  </div>
+
+  <button
+    class="btn btn-primary m-2 mt-3"
+    type="submit"
+    (click)="formValue()"
+    [disabled]="form.invalid"
+  >
+    Save
+  </button>
+</form>
